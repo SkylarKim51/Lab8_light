@@ -19,7 +19,7 @@ int main(void)
 	ADC_init();
     while (1) 
     {
-		unsigned short temp = ADC;
+		unsigned short temp = ~ADC;
 		unsigned char top8 = (char)temp;
 		unsigned char bottom2 = (char)(temp >> 8);
 		PORTB = top8;
