@@ -19,11 +19,17 @@ int main(void)
 	ADC_init();
     while (1) 
     {
-		unsigned short temp = ~ADC;
-		unsigned char top8 = (char)temp;
-		unsigned char bottom2 = (char)(temp >> 8);
-		PORTB = top8;
-		PORTD = bottom2;
+		unsigned short temp = ADC;
+		if(temp >= 816/2){
+			PORTB = 0x01;
+		}
+		else{
+			PORTB = 0x00;
+		}
+		//unsigned char top8 = (char)temp;
+		//unsigned char bottom2 = (char)(temp >> 8);
+		//PORTB = top8;
+		//PORTD = bottom2;
     }
 }
 
