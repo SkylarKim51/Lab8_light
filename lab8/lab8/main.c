@@ -19,12 +19,43 @@ int main(void)
 	ADC_init();
     while (1) 
     {
+		unsigned long max = 780;
 		unsigned short temp = ADC;
-		if(temp >= 816/2){
+		unsigned short x = max;
+		if(temp < (max/8)){
+			PORTB = 0x00;
+		}
+		max = x;
+		if(temp >= (max/8)){
 			PORTB = 0x01;
 		}
-		else{
-			PORTB = 0x00;
+		max = x;
+		if(temp >= (max/7)){
+			PORTB = 0x03;
+		}
+		max = x;
+		if(temp >= (max/6)){
+			PORTB = 0x07;
+		}
+		max = x;
+		if(temp >= (max/5)){
+			PORTB = 0x0F;
+		}
+		max = x;
+		if(temp >= (max/4)){
+			PORTB = 0x1F;
+		}
+		max = x;
+		if(temp >= (max/3)){
+			PORTB = 0x3F;
+		}
+		max = x;
+		if(temp >= (max/2)){
+			PORTB = 0x7F;
+		}
+		max = x;
+		if(temp >= max){
+			PORTB = 0xFF;
 		}
 		//unsigned char top8 = (char)temp;
 		//unsigned char bottom2 = (char)(temp >> 8);
